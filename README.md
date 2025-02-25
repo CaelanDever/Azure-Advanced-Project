@@ -81,6 +81,7 @@ Proper network segmentation is critical in enterprise environments to isolate wo
 
 NSGs are your primary firewall at the subnet or NIC level, ensuring only allowed traffic flows through.
 
+---
 Step 2 Instructions
 
 Create a Virtual Network:
@@ -159,6 +160,7 @@ Demonstrates typical IaaS workload hosting (legacy or custom software).
 
 VM Scale Sets are used for auto-scaling in enterprise environments to handle load variations.
 
+---
 Step 3 Instructions
 
 Create an Azure VM:
@@ -213,6 +215,7 @@ Serverless is cost-effective and scales dynamically.
 
 Perfect for event-driven workloads or backend processing.
 
+---
 Step 4 Instructions
 
 Create a Storage Account (Functions require a storage account):
@@ -285,6 +288,7 @@ Data persistence and management are critical in virtually any enterprise applica
 
 Using a managed database offloads patching, high availability, and backups to Azure.
 
+---
 Step 5 Instructions
 
 Azure SQL Database:
@@ -349,6 +353,7 @@ Why This Matters
 
 Observability is crucial for diagnosing issues, tracking usage, and optimizing performance.
 
+---
 Step 6 Instructions
 
 Create Log Analytics Workspace:
@@ -413,6 +418,7 @@ Enterprise compliance and security posture require consistent guardrails.
 
 Protecting secrets is mandatory to avoid data breaches.
 
+---
 Step 7 Instructions
 
 Create Azure Key Vault:
@@ -475,6 +481,7 @@ Cost is a major concern in enterprise cloud environments.
 
 Proactive alerts help you stay within budget and right-size resources.
 
+---
 Step 8 Instructions
 
 Create a Budget:
@@ -503,7 +510,6 @@ Screenshot:
 <img width="938" alt="advisor" src="https://github.com/user-attachments/assets/9830a6ab-b0b1-4d1d-8c32-f3e63fef8978" />
 
 ---
-
 
 # Troubleshooting Approaches
 
