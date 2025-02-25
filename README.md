@@ -7,10 +7,11 @@ High-Level Diagram
 
 Below is a high-level architecture you’ll build:
 
-<img width="399" alt="ovv" src="https://github.com/user-attachments/assets/00a65f29-2a4e-476d-b8ac-aedd95dd7c84" />
+
+<img width="389" alt="adaz" src="https://github.com/user-attachments/assets/406ce59f-23eb-4f43-861c-bd94412accf6" />
 
                    
-You will create multiple services in a well-structured and secure manner, then deploy your code via a CI/CD pipeline. This design is typical for an enterprise environment with both traditional IaaS components (like VMs) and modern PaaS components (like Azure Functions).
+You will create multiple services in a well-structured and secure manner so that future code is set up and ready to be deployed in a CI/CD pipeline. This design is typical for an enterprise environment with both traditional IaaS components (like VMs) and modern PaaS components (like Azure Functions).
 
 ---
 # Prerequisites and Setup
@@ -20,8 +21,6 @@ Azure Subscription: Ensure you have sufficient permissions (Owner or Contributor
 Azure CLI / PowerShell / Azure Portal: You can manage resources using any of these. We will showcase some key commands but feel free to use the Portal for a graphical approach.
 
 Code Editor: VS Code (preferred) with Azure extensions or any editor you prefer.
-
-Git and GitHub Account (if you are setting up GitHub Actions) or an Azure DevOps organization (if you choose Azure DevOps).
 
 ---
 # Step 1: Resource Organization (Management Group and Resource Group)
@@ -335,76 +334,7 @@ Screenshot:
 <img width="948" alt="dbadvanced" src="https://github.com/user-attachments/assets/8ff35e23-f74a-4ad5-9df0-e9c7b5592dac" />
 
 ---
-# Step 6: CI/CD Pipeline (Azure DevOps or GitHub Actions)
-What You’ll Do
-
-Set up a Continuous Integration / Continuous Deployment (CI/CD) pipeline for your Function and/or VM-based application code.
-
----
-Why This Matters
-
-CI/CD is crucial for quick, reliable releases and real-world DevOps culture.
-
-Option A: Azure DevOps Pipeline
-
-Create an Azure DevOps Project in dev.azure.com.
-
-Configure Repos to hold your code.
-
-Setup a Build Pipeline:
-
-Use Azure Function or .NET pipeline templates.
-
-Include steps to build, test, and package your Function code.
-
-Release Pipeline:
-
-Deploy the package to your Function App.
-
-Optionally, use ARM/Bicep templates to deploy infrastructure changes if needed.
-
-Option B: GitHub Actions
-
-Create a New Repository in GitHub and push your code.
-
-Add a Workflow (.github/workflows/azure-function.yml):
-
-name: Deploy Azure Function
-on:
-  push:
-    branches: [ "main" ]
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '6.0.x'
-      - name: Build
-        run: dotnet build --configuration Release
-      - name: Publish
-        run: dotnet publish --configuration Release -o ./publish
-      - name: Deploy to Azure
-        uses: azure/functions-action@v1
-        with:
-          app-name: fn-azure-advanced
-          package: ./publish
-
-Best Practices
-
-Separate Build and Release so you can store artifacts and run tests.
-
-Infrastructure as Code: Use Bicep, ARM templates, or Terraform to version-control your infrastructure as well.
-
-Screenshot:
-
-Azure DevOps build and release pipeline screens.
-GitHub Actions workflow run status and logs.
-
----
-# Step 7: Monitoring and Logging (Azure Monitor, App Insights, Log Analytics)
+# Step 6: Monitoring and Logging (Azure Monitor, App Insights, Log Analytics)
 
 What You’ll Do
 
@@ -419,7 +349,7 @@ Why This Matters
 
 Observability is crucial for diagnosing issues, tracking usage, and optimizing performance.
 
-Step 7 Instructions
+Step 6 Instructions
 
 Create Log Analytics Workspace:
 
@@ -435,6 +365,7 @@ az monitor app-insights component create \
     --resource-group rg-azure-advanced \
     --location eastus \
     --kind web
+
 Link Function App to App Insights:
 
 az resource update \
@@ -465,7 +396,7 @@ Screenshot:
 
 
 ---
-# Step 8: Governance and Security (Azure Policy, Azure Key Vault, RBAC)
+# Step 7: Governance and Security (Azure Policy, Azure Key Vault, RBAC)
 
 What You’ll Do
 
@@ -482,7 +413,7 @@ Enterprise compliance and security posture require consistent guardrails.
 
 Protecting secrets is mandatory to avoid data breaches.
 
-Step 8 Instructions
+Step 7 Instructions
 
 Create Azure Key Vault:
 
@@ -503,13 +434,17 @@ az keyvault secret set \
 Use Key Vault Reference in Function App:
 
 In Configuration -> New Setting -> Set the value to @Microsoft.KeyVault(SecretUri=https://kv-advanced.vault.azure.net/secrets/DbConnectionString/...).
+
 Azure Policy (Portal or CLI):
 
 Assign built-in policies (e.g., “Allowed locations”) to enforce resource creation only in eastus.
+
 Audit or deny non-compliant resources.
+
 RBAC:
 
 Use Azure RBAC roles to ensure only authorized users can deploy or manage resources.
+
 Best Practices
 
 Store all sensitive information in Key Vault, not in code or environment variables.
@@ -525,7 +460,7 @@ Screenshot:
 
 ---
 
-# Step 9: Cost Optimization (Budgets, Azure Advisor)
+# Step 8: Cost Optimization (Budgets, Azure Advisor)
 
 What You’ll Do
 
@@ -540,7 +475,7 @@ Cost is a major concern in enterprise cloud environments.
 
 Proactive alerts help you stay within budget and right-size resources.
 
-Step 9 Instructions
+Step 8 Instructions
 
 Create a Budget:
 
@@ -578,12 +513,6 @@ Verify NSG rules, route tables, and IP addresses.
 
 Check logs in Azure Network Watcher.
 
-Deployment Failures (CI/CD):
-
-Review pipeline logs for detailed error messages.
-
-Validate environment variables and secrets.
-
 Function App Not Triggering:
 
 Ensure the trigger type is correct (HTTP, Timer, Event).
@@ -609,8 +538,6 @@ By following this advanced Azure cloud project:
 
 You’ve built an enterprise-grade solution using Azure VNet, NSG, Azure VMs/Scale Sets, serverless Azure Functions, Azure Storage, Azure SQL Database, Key Vault, Azure Monitor, and more.
 
-You’ve integrated a CI/CD pipeline (Azure DevOps or GitHub Actions) and ensured governance, security, and cost optimization best practices.
-
-You’ve captured screenshots and organized your code in a GitHub repository that you can showcase in interviews and on your resume or LinkedIn profile.
+You’ve set up the code ready to be integrated a CI/CD pipeline (Azure DevOps or GitHub Actions) and it will have ensured governance, security, and cost optimization best practices.
 
 This end-to-end project mirrors many responsibilities of a senior cloud engineer—from architecture design and security to deployment automation and cost governance. By mastering these concepts, you’ll demonstrate both breadth and depth of expertise in Azure.
