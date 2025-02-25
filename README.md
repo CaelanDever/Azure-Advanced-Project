@@ -4,30 +4,8 @@ Project Overview and Architecture
 High-Level Diagram
 Below is a high-level architecture you’ll build:
 
-                   Management Group
-                         |
-                   Resource Group
-                         |
-   ┌─────────────────────────────────────────┐
-   │             Virtual Network            │
-   │        ┌────────────┐  ┌────────────┐ │
-   │        │  Subnet A  │  │  Subnet B  │ │
-   │        └────────────┘  └────────────┘ │
-   │         Azure VMs / Scale Sets         │
-   │               (Compute)               │
-   │     ┌───────────────────────────┐     │
-   │     │  Network Security Group   │     │
-   │     └───────────────────────────┘     │
-   └─────────────────────────────────────────┘
+<img width="399" alt="ovv" src="https://github.com/user-attachments/assets/00a65f29-2a4e-476d-b8ac-aedd95dd7c84" />
 
-      Azure Function  <--->  Azure Storage  <--->  Azure SQL DB
-         (Serverless)             (Data)               (DB)
-
-                   CI/CD Pipeline (DevOps or GitHub Actions)
-                   Monitoring (Azure Monitor, App Insights)
-                   Governance (Azure Policy, RBAC)
-                   Security (Azure Key Vault, NSG Rules)
-                   Cost Optimization (Azure Advisor, Budgets)
 
                    
 You will create multiple services in a well-structured and secure manner, then deploy your code via a CI/CD pipeline. This design is typical for an enterprise environment with both traditional IaaS components (like VMs) and modern PaaS components (like Azure Functions).
