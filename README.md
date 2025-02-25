@@ -4,7 +4,6 @@ Project Overview and Architecture
 High-Level Diagram
 Below is a high-level architecture you’ll build:
 
-
                    Management Group
                          |
                    Resource Group
@@ -29,8 +28,10 @@ Below is a high-level architecture you’ll build:
                    Governance (Azure Policy, RBAC)
                    Security (Azure Key Vault, NSG Rules)
                    Cost Optimization (Azure Advisor, Budgets)
+
                    
 You will create multiple services in a well-structured and secure manner, then deploy your code via a CI/CD pipeline. This design is typical for an enterprise environment with both traditional IaaS components (like VMs) and modern PaaS components (like Azure Functions).
+
 ---
 # Prerequisites and Setup
 Azure Subscription: Ensure you have sufficient permissions (Owner or Contributor) or are using a free Azure account with a limit that can handle the project resources.
