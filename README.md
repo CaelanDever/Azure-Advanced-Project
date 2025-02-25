@@ -265,7 +265,6 @@ Store secrets (e.g., connection strings) in Azure Key Vault and reference them v
 
 Screenshot:
 
-<img width="765" alt="2wr" src="https://github.com/user-attachments/assets/e8587d97-5052-4272-b5ed-167b0a5885af" />
 
 <img width="892" alt="httptrigger" src="https://github.com/user-attachments/assets/1ad33c84-9c78-4768-b5b8-2b963eb24128" />
 
